@@ -23,7 +23,7 @@ stages:
 
     steps:
 
-    - scripts: |
+    - script: |
         echo "var=$(appVersion)"
         echo "tag= ${{ parameters.tag }}"
 
