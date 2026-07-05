@@ -6,12 +6,10 @@ resources:
 
 variables: # <---------------------- AGREGA LAS VARIABLES
   - group: CICD
-  - name: appVersion
-    value: $[variables.appVersion]
 
 parameters:
   - name: tag
-    default: '$(Build.BuildId)'
+    default: "$(Build.BuildId)"
   - name: imageName
     default: 'demo-page'
 
@@ -24,6 +22,11 @@ stages:
     pool: local-agent
 
     steps:
+
+    - scripts: |
+        echo "var=$(appVersion)"
+        echo "tag= ${{ parameters.tag }}"
+
     - task: Docker@2
       displayName: Build an image
       inputs:
